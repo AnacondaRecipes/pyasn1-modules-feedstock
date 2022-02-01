@@ -22,7 +22,8 @@ requirements:
   host:
     - python
     - setuptools
-
+    - pip
+    - wheel
   run:
     - python
     - pyasn1 >=0.4.6,<0.5.0
