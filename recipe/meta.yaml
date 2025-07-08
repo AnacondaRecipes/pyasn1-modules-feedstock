@@ -22,7 +22,7 @@ requirements:
     - wheel
   run:
     - python
-    - pyasn1 >=0.4.6,<0.5.0
+    - pyasn1 >=0.6.1,<0.7.0
 
 test:
   imports:
