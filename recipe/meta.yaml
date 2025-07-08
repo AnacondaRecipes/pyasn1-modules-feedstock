@@ -37,7 +37,7 @@ test:
     - pytest -vv tests
 
 about:
-  home: https://pyasn1.readthedocs.io
+  home: https://github.com/pyasn1/pyasn1-modules
   license_file: LICENSE.txt
   license: BSD 2-Clause
   license_family: BSD
