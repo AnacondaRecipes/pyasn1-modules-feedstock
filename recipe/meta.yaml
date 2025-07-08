@@ -37,13 +37,18 @@ test:
     - pytest -vv tests
 
 about:
-  home: http://pyasn1.sourceforge.net
+  home: https://pyasn1.readthedocs.io
   license_file: LICENSE.txt
   license: BSD 2-Clause
   license_family: BSD
   summary: A collection of ASN.1-based protocols modules.
+  description: |
+    Abstract Syntax Notation One (ASN.1) is a technology for exchanging structured
+    data in a universally understood, hardware agnostic way. Many industrial, 
+    security and telephony applications heavily rely on ASN.1.
+    The pyasn1 library implements ASN.1 support in pure-Python.
   dev_url: https://github.com/pyasn1/pyasn1-modules
-  doc_url: http://pyasn1.sourceforge.net
+  doc_url: https://pyasn1.readthedocs.io
 
 extra:
   recipe-maintainers:
