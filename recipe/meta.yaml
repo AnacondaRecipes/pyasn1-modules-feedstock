@@ -29,13 +29,13 @@ test:
     - pyasn1_modules
 
 about:
-  home: http://pyasn1.sourceforge.net/
+  home: http://pyasn1.sourceforge.net
   license_file: LICENSE.txt
   license: BSD 2-Clause
   license_family: BSD
   summary: A collection of ASN.1-based protocols modules.
-  dev_url: https://github.com/etingof/pyasn1-modules
-  doc_url: http://pyasn1.sourceforge.net/
+  dev_url: https://github.com/pyasn1/pyasn1-modules
+  doc_url: http://pyasn1.sourceforge.net
 
 extra:
   recipe-maintainers:
