@@ -25,11 +25,16 @@ requirements:
     - pyasn1 >=0.6.1,<0.7.0
 
 test:
+  source_files:
+    - tests
+  requires:
+    - pytest
   imports:
     - pyasn1_modules
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -vv tests
 
 about:
   home: http://pyasn1.sourceforge.net
