@@ -1,22 +1,18 @@
 {% set name = "pyasn1-modules" %}
-{% set version = "0.2.8" %}
-{% set bundle = "tar.gz" %}
-{% set sha256 = "905f84c712230b2c592c19470d3ca8d552de726050d1d1716282a1f6146be65e" %}
-{% set build = 0 %}
+{% set version = "0.4.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ bundle }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 677091de870a80aae844b1ca6134f54652fa2c8c5a52aa396440ac3106e941e6
 
 build:
-  noarch: python
-  number: {{ build }}
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  skip: true  # [py<38]
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vvv
 
 requirements:
   host:
@@ -26,20 +22,34 @@ requirements:
     - wheel
   run:
     - python
-    - pyasn1 >=0.4.6,<0.5.0
+    - pyasn1 >=0.6.1,<0.7.0
 
 test:
+  source_files:
+    - tests
+  requires:
+    - pip
+    - pytest
   imports:
     - pyasn1_modules
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -vv tests
 
 about:
-  home: http://pyasn1.sourceforge.net/
+  home: https://github.com/pyasn1/pyasn1-modules
   license_file: LICENSE.txt
-  license: BSD 2-Clause
+  license: BSD-2-Clause
   license_family: BSD
   summary: A collection of ASN.1-based protocols modules.
-  dev_url: https://github.com/etingof/pyasn1-modules
-  doc_url: http://pyasn1.sourceforge.net/
+  description: |
+    Abstract Syntax Notation One (ASN.1) is a technology for exchanging structured
+    data in a universally understood, hardware agnostic way. Many industrial, 
+    security and telephony applications heavily rely on ASN.1.
+    The pyasn1 library implements ASN.1 support in pure-Python.
+  dev_url: https://github.com/pyasn1/pyasn1-modules
+  doc_url: https://pyasn1.readthedocs.io
 
 extra:
   recipe-maintainers:
